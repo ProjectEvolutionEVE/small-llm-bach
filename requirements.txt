@@ -1,0 +1,11 @@
+# Intel Mac: PyTorch stops at 2.2.2 (Python <= 3.12), so the rest is pinned to versions that work with it.
+# Setup: /usr/local/bin/python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
+torch==2.2.2
+numpy<2
+transformers<5
+datasets<4
+pyarrow<19
+accelerate<1.11
+music21==10.5.2
+contourpy<1.4
+verovio==6.4.0

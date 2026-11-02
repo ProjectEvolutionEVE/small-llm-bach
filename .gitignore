@@ -1,0 +1,27 @@
+# Local environment
+.venv/
+__pycache__/
+.DS_Store
+
+# Internal working notes
+CLAUDE.md
+
+# Trained models (large; rebuilt by the training scripts)
+tinyLLM/
+bachLLM/
+
+# Data built from the music21 corpus (rebuilt by music_data.py)
+music_data/
+
+# Hassan Habib's original text experiment (github.com/hassanhabib/LLMfromNothing):
+# his repo has no license, so it stays out unless he grants permission
+train.py
+test.py
+train.txt
+convert_to_gguf.py
+
+# Logs
+*.log
+
+# Website draft (published on risesolutions-llc.com, not part of the code)
+report/

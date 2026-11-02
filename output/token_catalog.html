@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bach Token Catalog</title>
+<style>
+  body { margin: 0; padding: 16px; background: #fff; color: #1f2328;
+         font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  p { margin: 0 0 12px; color: #57606a; max-width: 760px; }
+  table { border-collapse: collapse; width: 100%; max-width: 760px; }
+  th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid #eaeef2; }
+  th { background: #f6f8fa; position: sticky; top: 0; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.zero td { color: #8c959f; }
+  code { font: 13px ui-monospace, Menlo, monospace; }
+</style>
+</head>
+<body>
+<h1>Bach model: token catalog</h1>
+<p>75 tokens in all: 6 markers and
+69 pitches. 62 appear in the training data
+(3,471,456 tokens, all 12 keys); grey rows never do. Every sixteenth-note step is 4 tokens,
+one each for soprano, alto, tenor and bass.</p>
+<table>
+<thead><tr><th>ID</th><th>Token</th><th>Meaning</th><th class="num">Count</th><th class="num">Share</th></tr></thead>
+<tbody>
+<tr class='zero'><td>0</td><td><code>PAD</code></td><td>Filler, never trained on (unused: chunks are packed full)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class=''><td>1</td><td><code>BOS</code></td><td>Beginning of a piece</td><td class='num'>3,972</td><td class='num'>0.11%</td></tr>
+<tr class=''><td>2</td><td><code>EOS</code></td><td>End of a piece</td><td class='num'>3,972</td><td class='num'>0.11%</td></tr>
+<tr class=''><td>3</td><td><code>BAR</code></td><td>Bar line (takes no time)</td><td class='num'>62,040</td><td class='num'>1.79%</td></tr>
+<tr class=''><td>4</td><td><code>HOLD</code></td><td>This voice keeps holding its note for one more sixteenth</td><td class='num'>2,455,368</td><td class='num'>70.73%</td></tr>
+<tr class=''><td>5</td><td><code>REST</code></td><td>This voice is silent for one sixteenth</td><td class='num'>35,712</td><td class='num'>1.03%</td></tr>
+<tr class='zero'><td>6</td><td><code>P28</code></td><td>Start note E1 (MIDI 28)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>7</td><td><code>P29</code></td><td>Start note F1 (MIDI 29)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>8</td><td><code>P30</code></td><td>Start note F#1 (MIDI 30)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class=''><td>9</td><td><code>P31</code></td><td>Start note G1 (MIDI 31)</td><td class='num'>27</td><td class='num'>0.00%</td></tr>
+<tr class=''><td>10</td><td><code>P32</code></td><td>Start note G#1 (MIDI 32)</td><td class='num'>28</td><td class='num'>0.00%</td></tr>
+<tr class=''><td>11</td><td><code>P33</code></td><td>Start note A1 (MIDI 33)</td><td class='num'>131</td><td class='num'>0.00%</td></tr>
+<tr class=''><td>12</td><td><code>P34</code></td><td>Start note A#1 (MIDI 34)</td><td class='num'>156</td><td class='num'>0.00%</td></tr>
+<tr class=''><td>13</td><td><code>P35</code></td><td>Start note B1 (MIDI 35)</td><td class='num'>283</td><td class='num'>0.01%</td></tr>
+<tr class=''><td>14</td><td><code>P36</code></td><td>Start note C2 (MIDI 36)</td><td class='num'>516</td><td class='num'>0.01%</td></tr>
+<tr class=''><td>15</td><td><code>P37</code></td><td>Start note C#2 (MIDI 37)</td><td class='num'>636</td><td class='num'>0.02%</td></tr>
+<tr class=''><td>16</td><td><code>P38</code></td><td>Start note D2 (MIDI 38)</td><td class='num'>1,474</td><td class='num'>0.04%</td></tr>
+<tr class=''><td>17</td><td><code>P39</code></td><td>Start note D#2 (MIDI 39)</td><td class='num'>1,607</td><td class='num'>0.05%</td></tr>
+<tr class=''><td>18</td><td><code>P40</code></td><td>Start note E2 (MIDI 40)</td><td class='num'>2,933</td><td class='num'>0.08%</td></tr>
+<tr class=''><td>19</td><td><code>P41</code></td><td>Start note F2 (MIDI 41)</td><td class='num'>3,673</td><td class='num'>0.11%</td></tr>
+<tr class=''><td>20</td><td><code>P42</code></td><td>Start note F#2 (MIDI 42)</td><td class='num'>4,787</td><td class='num'>0.14%</td></tr>
+<tr class=''><td>21</td><td><code>P43</code></td><td>Start note G2 (MIDI 43)</td><td class='num'>6,381</td><td class='num'>0.18%</td></tr>
+<tr class=''><td>22</td><td><code>P44</code></td><td>Start note G#2 (MIDI 44)</td><td class='num'>7,151</td><td class='num'>0.21%</td></tr>
+<tr class=''><td>23</td><td><code>P45</code></td><td>Start note A2 (MIDI 45)</td><td class='num'>9,844</td><td class='num'>0.28%</td></tr>
+<tr class=''><td>24</td><td><code>P46</code></td><td>Start note A#2 (MIDI 46)</td><td class='num'>10,652</td><td class='num'>0.31%</td></tr>
+<tr class=''><td>25</td><td><code>P47</code></td><td>Start note B2 (MIDI 47)</td><td class='num'>13,085</td><td class='num'>0.38%</td></tr>
+<tr class=''><td>26</td><td><code>P48</code></td><td>Start note C3 (MIDI 48)</td><td class='num'>14,636</td><td class='num'>0.42%</td></tr>
+<tr class=''><td>27</td><td><code>P49</code></td><td>Start note C#3 (MIDI 49)</td><td class='num'>16,340</td><td class='num'>0.47%</td></tr>
+<tr class=''><td>28</td><td><code>P50</code></td><td>Start note D3 (MIDI 50)</td><td class='num'>18,739</td><td class='num'>0.54%</td></tr>
+<tr class=''><td>29</td><td><code>P51</code></td><td>Start note D#3 (MIDI 51)</td><td class='num'>19,737</td><td class='num'>0.57%</td></tr>
+<tr class=''><td>30</td><td><code>P52</code></td><td>Start note E3 (MIDI 52)</td><td class='num'>23,002</td><td class='num'>0.66%</td></tr>
+<tr class=''><td>31</td><td><code>P53</code></td><td>Start note F3 (MIDI 53)</td><td class='num'>24,301</td><td class='num'>0.70%</td></tr>
+<tr class=''><td>32</td><td><code>P54</code></td><td>Start note F#3 (MIDI 54)</td><td class='num'>26,311</td><td class='num'>0.76%</td></tr>
+<tr class=''><td>33</td><td><code>P55</code></td><td>Start note G3 (MIDI 55)</td><td class='num'>28,284</td><td class='num'>0.81%</td></tr>
+<tr class=''><td>34</td><td><code>P56</code></td><td>Start note G#3 (MIDI 56)</td><td class='num'>29,153</td><td class='num'>0.84%</td></tr>
+<tr class=''><td>35</td><td><code>P57</code></td><td>Start note A3 (MIDI 57)</td><td class='num'>32,205</td><td class='num'>0.93%</td></tr>
+<tr class=''><td>36</td><td><code>P58</code></td><td>Start note A#3 (MIDI 58)</td><td class='num'>32,673</td><td class='num'>0.94%</td></tr>
+<tr class=''><td>37</td><td><code>P59</code></td><td>Start note B3 (MIDI 59)</td><td class='num'>35,195</td><td class='num'>1.01%</td></tr>
+<tr class=''><td>38</td><td><code>P60</code></td><td>Start note C4 (MIDI 60)</td><td class='num'>36,491</td><td class='num'>1.05%</td></tr>
+<tr class=''><td>39</td><td><code>P61</code></td><td>Start note C#4 (MIDI 61)</td><td class='num'>37,714</td><td class='num'>1.09%</td></tr>
+<tr class=''><td>40</td><td><code>P62</code></td><td>Start note D4 (MIDI 62)</td><td class='num'>39,198</td><td class='num'>1.13%</td></tr>
+<tr class=''><td>41</td><td><code>P63</code></td><td>Start note D#4 (MIDI 63)</td><td class='num'>39,241</td><td class='num'>1.13%</td></tr>
+<tr class=''><td>42</td><td><code>P64</code></td><td>Start note E4 (MIDI 64)</td><td class='num'>39,102</td><td class='num'>1.13%</td></tr>
+<tr class=''><td>43</td><td><code>P65</code></td><td>Start note F4 (MIDI 65)</td><td class='num'>38,477</td><td class='num'>1.11%</td></tr>
+<tr class=''><td>44</td><td><code>P66</code></td><td>Start note F#4 (MIDI 66)</td><td class='num'>37,893</td><td class='num'>1.09%</td></tr>
+<tr class=''><td>45</td><td><code>P67</code></td><td>Start note G4 (MIDI 67)</td><td class='num'>36,288</td><td class='num'>1.05%</td></tr>
+<tr class=''><td>46</td><td><code>P68</code></td><td>Start note G#4 (MIDI 68)</td><td class='num'>35,686</td><td class='num'>1.03%</td></tr>
+<tr class=''><td>47</td><td><code>P69</code></td><td>Start note A4 (MIDI 69)</td><td class='num'>31,928</td><td class='num'>0.92%</td></tr>
+<tr class=''><td>48</td><td><code>P70</code></td><td>Start note A#4 (MIDI 70)</td><td class='num'>31,000</td><td class='num'>0.89%</td></tr>
+<tr class=''><td>49</td><td><code>P71</code></td><td>Start note B4 (MIDI 71)</td><td class='num'>26,751</td><td class='num'>0.77%</td></tr>
+<tr class=''><td>50</td><td><code>P72</code></td><td>Start note C5 (MIDI 72)</td><td class='num'>23,972</td><td class='num'>0.69%</td></tr>
+<tr class=''><td>51</td><td><code>P73</code></td><td>Start note C#5 (MIDI 73)</td><td class='num'>21,067</td><td class='num'>0.61%</td></tr>
+<tr class=''><td>52</td><td><code>P74</code></td><td>Start note D5 (MIDI 74)</td><td class='num'>16,449</td><td class='num'>0.47%</td></tr>
+<tr class=''><td>53</td><td><code>P75</code></td><td>Start note D#5 (MIDI 75)</td><td class='num'>15,276</td><td class='num'>0.44%</td></tr>
+<tr class=''><td>54</td><td><code>P76</code></td><td>Start note E5 (MIDI 76)</td><td class='num'>10,829</td><td class='num'>0.31%</td></tr>
+<tr class=''><td>55</td><td><code>P77</code></td><td>Start note F5 (MIDI 77)</td><td class='num'>9,415</td><td class='num'>0.27%</td></tr>
+<tr class=''><td>56</td><td><code>P78</code></td><td>Start note F#5 (MIDI 78)</td><td class='num'>6,875</td><td class='num'>0.20%</td></tr>
+<tr class=''><td>57</td><td><code>P79</code></td><td>Start note G5 (MIDI 79)</td><td class='num'>4,886</td><td class='num'>0.14%</td></tr>
+<tr class=''><td>58</td><td><code>P80</code></td><td>Start note G#5 (MIDI 80)</td><td class='num'>3,848</td><td class='num'>0.11%</td></tr>
+<tr class=''><td>59</td><td><code>P81</code></td><td>Start note A5 (MIDI 81)</td><td class='num'>1,758</td><td class='num'>0.05%</td></tr>
+<tr class=''><td>60</td><td><code>P82</code></td><td>Start note A#5 (MIDI 82)</td><td class='num'>1,385</td><td class='num'>0.04%</td></tr>
+<tr class=''><td>61</td><td><code>P83</code></td><td>Start note B5 (MIDI 83)</td><td class='num'>552</td><td class='num'>0.02%</td></tr>
+<tr class=''><td>62</td><td><code>P84</code></td><td>Start note C6 (MIDI 84)</td><td class='num'>251</td><td class='num'>0.01%</td></tr>
+<tr class=''><td>63</td><td><code>P85</code></td><td>Start note C#6 (MIDI 85)</td><td class='num'>109</td><td class='num'>0.00%</td></tr>
+<tr class=''><td>64</td><td><code>P86</code></td><td>Start note D6 (MIDI 86)</td><td class='num'>6</td><td class='num'>0.00%</td></tr>
+<tr class=''><td>65</td><td><code>P87</code></td><td>Start note D#6 (MIDI 87)</td><td class='num'>5</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>66</td><td><code>P88</code></td><td>Start note E6 (MIDI 88)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>67</td><td><code>P89</code></td><td>Start note F6 (MIDI 89)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>68</td><td><code>P90</code></td><td>Start note F#6 (MIDI 90)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>69</td><td><code>P91</code></td><td>Start note G6 (MIDI 91)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>70</td><td><code>P92</code></td><td>Start note G#6 (MIDI 92)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>71</td><td><code>P93</code></td><td>Start note A6 (MIDI 93)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>72</td><td><code>P94</code></td><td>Start note A#6 (MIDI 94)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>73</td><td><code>P95</code></td><td>Start note B6 (MIDI 95)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+<tr class='zero'><td>74</td><td><code>P96</code></td><td>Start note C7 (MIDI 96)</td><td class='num'>0</td><td class='num'>0.00%</td></tr>
+</tbody>
+</table>
+</body>
+</html>
