@@ -25,3 +25,6 @@ convert_to_gguf.py
 
 # Website draft (published on risesolutions-llc.com, not part of the code)
 report/
+
+# Experiment 2 models and their logs (rebuilt by run_experiment2.sh)
+models/

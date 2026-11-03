@@ -8,7 +8,7 @@
 # never seen in any key during training.
 #
 # Run: .venv/bin/python music_data.py
-# Output: music_data/train.json, music_data/val.json, music_data/val_pieces.json
+# Output: music_data/train.json, train_groups.json, val.json, val_pieces.json
 
 import json
 import random
@@ -36,20 +36,23 @@ random.Random(SEED).shuffle(grids)
 val, train = grids[:VAL_PIECES], grids[VAL_PIECES:]
 
 def encode_all(items, transpose):
-    sequences = []
-    for _, grid in items:
+    """Returns the sequences and, for each one, the number of its piece."""
+    sequences, pieces = [], []
+    for n, (_, grid) in enumerate(items):
         shifts = range(-5, 7) if transpose else [0]
         for shift in shifts:
             ids = grid_to_ids(grid, shift)
             if ids is not None:
                 sequences.append(ids)
-    return sequences
+                pieces.append(n)
+    return sequences, pieces
 
-train_seqs = encode_all(train, transpose=True)
-val_seqs = encode_all(val, transpose=False)
+train_seqs, train_groups = encode_all(train, transpose=True)
+val_seqs, _ = encode_all(val, transpose=False)
 
 OUT_DIR.mkdir(exist_ok=True)
 (OUT_DIR / "train.json").write_text(json.dumps(train_seqs))
+(OUT_DIR / "train_groups.json").write_text(json.dumps(train_groups))   # piece number per sequence
 (OUT_DIR / "val.json").write_text(json.dumps(val_seqs))
 (OUT_DIR / "val_pieces.json").write_text(json.dumps([p for p, _ in val], indent=1))
 

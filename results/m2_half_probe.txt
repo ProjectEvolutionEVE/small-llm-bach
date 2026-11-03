@@ -1,0 +1,35 @@
+models/m2_half: pitch similarity by distance, P36..P81
+
+half-steps  interval      trained untrained
+         1  half-step       0.266     0.037
+         2  whole step      0.220     0.078
+         3  minor 3rd       0.295     0.056
+         4  major 3rd       0.247     0.102
+         5  4th             0.259     0.188
+         6  tritone         0.136     0.056
+         7  5th             0.220     0.186
+         8  minor 6th       0.165     0.100
+         9  major 6th       0.190     0.044
+        10  minor 7th       0.089     0.060
+        11  major 7th       0.105     0.017
+        12  OCTAVE          0.718     0.821
+        13                  0.074     0.010
+        14                  0.033     0.052
+        15                  0.095     0.029
+        16                  0.049     0.077
+        17                  0.057     0.157
+        18                 -0.052     0.028
+        19  octave + 5th    0.034     0.148
+        20                 -0.031     0.064
+        21                 -0.006     0.012
+        22                 -0.087     0.023
+        23                 -0.069    -0.022
+        24  2 OCTAVES       0.500     0.771
+
+Peaks (above the two neighbouring distances):
+  5th           trained +0.070   untrained +0.108
+  OCTAVE        trained +0.629   untrained +0.807
+  octave + 5th  trained +0.076   untrained +0.102
+  2 OCTAVES     trained +0.583   untrained +0.792
+
+Octave partner's rank among the 45 other pitches (1 = most alike): median 1, in top 3 for 100% of pitches

@@ -11,11 +11,18 @@
 # half-steps. The same is done for an untrained model with random vectors,
 # which shows what "nothing learned" looks like.
 #
-# Run: .venv/bin/python probe_pitch.py
+# Run: .venv/bin/python probe_pitch.py [MODEL_DIR]   (default bachLLM)
+#
+# For models that get physics or position facts (music_model.py), the vector
+# probed is what the model actually reads for each pitch: its learned vector
+# plus its physics facts.
+
+import sys
 
 import numpy as np
 import torch
-from transformers import GPT2LMHeadModel
+
+from music_model import BachGPT, load
 
 from music_tokens import TOKEN_TO_ID
 
@@ -36,17 +43,19 @@ def by_interval(vectors):
 
 def pitch_vectors(model):
     ids = [TOKEN_TO_ID[f"P{m}"] for m in range(LOW, HIGH + 1)]
-    return model.transformer.wte.weight[ids].detach().numpy()
+    with torch.no_grad():
+        return model.token_vectors(torch.tensor([ids]))[0].numpy()
 
 
-trained = GPT2LMHeadModel.from_pretrained("bachLLM")
+MODEL_DIR = sys.argv[1] if len(sys.argv) > 1 else "bachLLM"
+trained = load(MODEL_DIR)
 torch.manual_seed(0)
-untrained = GPT2LMHeadModel(trained.config)
+untrained = BachGPT(trained.config).eval()
 
 learned = by_interval(pitch_vectors(trained))
 random_ = by_interval(pitch_vectors(untrained))
 
-print(f"Pitch similarity by distance, P{LOW}..P{HIGH}\n")
+print(f"{MODEL_DIR}: pitch similarity by distance, P{LOW}..P{HIGH}\n")
 print(f"{'half-steps':>10}  {'interval':<13}{'trained':>8}{'untrained':>10}")
 for d in range(1, 25):
     print(f"{d:>10}  {NAMES.get(d, ''):<13}{learned[d]:>8.3f}{random_[d]:>10.3f}")
