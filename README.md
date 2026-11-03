@@ -22,6 +22,31 @@ by the model. Temperature 0.9, seed 0, first and only run, not cherry-picked.
 **What it got wrong:** it miscounts beats (bars of 7/8, 9/8 and 5/8), so notes sometimes slip into
 the wrong voice, and its phrases rarely come to rest.
 
+## What it worked out on its own
+
+Nobody told the model how notes relate: `P60` and `P72` are just two names. Looking inside it
+afterwards (`probe_pitch.py`, results in [`output/pitch_probe_baseline.txt`](output/pitch_probe_baseline.txt)),
+we compared the vector it learned for every pitch with every other, grouped by distance:
+
+| Distance (half-steps) | How alike (trained) | Untrained | What it means |
+|---|---|---|---|
+| 1–5 (steps, 3rds, 4th) | 0.23–0.34 | ~0 | Nearby notes are treated as alike |
+| 6, tritone | 0.04, a dip | ~0 | The most clashing interval is set apart |
+| 7, fifth | 0.14, a bump | ~0 | Partly found the 3:2 ratio |
+| 11 and 13 | below 0 | ~0 | |
+| **12, octave** | **0.24, a spike** | ~0 | Found the 2:1 ratio: same note, higher |
+| 24, two octaves | a smaller spike | ~0 | The pattern repeats |
+
+Still unresolved: a note's octave partner ranks only about 8th most alike of 45, and the thirds
+and sixths (5:4, 5:3) barely register.
+
+## Next: does the physics of sound help?
+
+Each pitch token will carry fixed facts physics already sets (note name, octave, frequency, where
+its overtones land), with no music theory and no Bach-specific labels. A second test gives the
+model its place in the bar (counting only). Our predictions, Eric's and Claude's, are written in
+[`PREDICTIONS.md`](PREDICTIONS.md) and committed before any of these tests run.
+
 ## Where it started
 
 This project began with Hassan Habib's
@@ -90,6 +115,8 @@ python3.12 -m venv .venv
 | `generate_music.py` | Continues a held-out chorale, writes WAV, MIDI, MusicXML |
 | `score_compare.py` | Draws both scores side by side (Verovio) |
 | `token_catalog.py` | Lists every token with its training count |
+| `probe_pitch.py` | Looks inside the trained model at what it learned about pitch |
+| `PREDICTIONS.md` | Predictions for the next experiment, written before it runs |
 
 ## Credits
 
